@@ -34,19 +34,19 @@ export function HoldingRow({
         <span className="flex items-center gap-8">
           <span className="mono-data text-[11px] text-cloud">{holding.ticker}</span>
           {!isCash && (
-            <span className="mono-data hidden text-[9px] text-fog sm:inline">
+            <span className="mono-data hidden text-[10px] text-ash sm:inline">
               {number(holding.weight, 1)}%
             </span>
           )}
         </span>
-        <span className="mt-4 block truncate text-caption text-fog">{holding.name}</span>
+        <span className="mt-4 block truncate text-caption text-ash">{holding.name}</span>
       </span>
 
       <span className="hidden text-right sm:block">
         <span className="tnum block text-body-sm text-cloud">{currency(holding.price)}</span>
         <span className="mt-4 block">
           {isCash ? (
-            <span className="mono-data text-[10px] text-fog">—</span>
+            <span className="mono-data text-[10px] text-ash">—</span>
           ) : (
             <Change value={holding.dayChange} className="text-[10px]">
               {signedPercent(Math.abs(holding.dayChangePercent), 2).replace(/^\+/, '')}
@@ -59,7 +59,7 @@ export function HoldingRow({
         <span className="tnum block text-body-sm text-cloud">
           {isCash ? '—' : number(holding.shares, holding.shares % 1 === 0 ? 0 : 2)}
         </span>
-        <span className="mono-data mt-4 block text-[10px] text-fog">
+        <span className="mono-data mt-4 block text-[10px] text-ash">
           {isCash ? 'Cash' : `avg ${currency(holding.costPerShare)}`}
         </span>
       </span>
@@ -70,7 +70,7 @@ export function HoldingRow({
         </span>
         <span className="mt-4 block">
           {isCash ? (
-            <span className="mono-data text-[10px] text-fog">No return</span>
+            <span className="mono-data text-[10px] text-ash">No return</span>
           ) : (
             <Change value={holding.totalReturn} className="text-[10px]">
               {signedPercent(Math.abs(holding.returnPercent), 1).replace(/^\+/, '')}

@@ -40,7 +40,11 @@ export function TopBar({
         <IconMenu size={18} />
       </IconButton>
 
-      <Link to="/dashboard" className="mr-4 inline-flex items-center gap-8 lg:hidden">
+      <Link
+        to="/dashboard"
+        aria-label="Origin overview"
+        className="mr-2 inline-flex size-36 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-glass lg:hidden"
+      >
         <IconLogo size={19} className="text-pure" />
       </Link>
 
@@ -62,13 +66,13 @@ export function TopBar({
         onClick={onOpenSearch}
         className={cn(
           'group hidden h-36 w-[248px] items-center gap-10 rounded-lg border border-hairline',
-          'bg-obsidian px-12 text-body-sm text-fog transition-colors duration-200 ease-[var(--ease-state)]',
+          'bg-obsidian px-12 text-body-sm text-ash transition-colors duration-200 ease-[var(--ease-state)]',
           'hover:border-hairline-strong hover:text-ash md:flex xl:w-[300px]',
         )}
       >
         <IconSearch size={15} className="shrink-0" />
         <span className="flex-1 text-left">Search</span>
-        <kbd className="mono-data shrink-0 rounded border border-hairline px-5 py-1 text-[9px]">
+        <kbd className="mono-data shrink-0 rounded border border-hairline px-5 py-1 text-[10px]">
           ⌘K
         </kbd>
       </button>
@@ -106,7 +110,7 @@ export function TopBar({
             <Avatar name={profile.name} size={30} />
             <IconChevronDown
               size={13}
-              className={cn('hidden text-fog transition-transform duration-200 sm:block', open && 'rotate-180')}
+              className={cn('hidden text-ash transition-transform duration-200 sm:block', open && 'rotate-180')}
             />
           </button>
         )}
@@ -115,8 +119,8 @@ export function TopBar({
           <>
             <div className="border-b border-hairline px-10 pb-10 pt-6">
               <p className="truncate text-body-sm text-cloud">{profile.name}</p>
-              <p className="truncate text-caption text-fog">{profile.email}</p>
-              <p className="mono-data mt-6 text-[9px] text-fog">
+              <p className="truncate text-caption text-ash">{profile.email}</p>
+              <p className="mono-data mt-6 text-[10px] text-ash">
                 {data.user.plan} · Member since {data.user.memberSince}
               </p>
             </div>

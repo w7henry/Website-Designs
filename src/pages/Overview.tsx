@@ -102,7 +102,7 @@ export function Overview() {
                 <span className="tnum text-body-sm text-ash">
                   {signedCurrency(delta.absolute, { cents: false })}
                 </span>
-                <span className="text-body-sm text-fog">
+                <span className="text-body-sm text-ash">
                   over {rangeLabel === 'All' ? 'all time' : `the last ${rangeLabel}`}
                 </span>
               </p>
@@ -153,7 +153,8 @@ export function Overview() {
                     : ((month.income - previous.income) / previous.income) * 100
                 }
                 changeLabel="vs same days last month"
-                footnote="Salary, consulting and interest received."
+                changeLabelShort="vs last month"
+                footnote="Salary, consulting and interest."
               />
               <MetricCard
                 label="Spending"
@@ -165,6 +166,7 @@ export function Overview() {
                     : ((month.spending - previous.spending) / previous.spending) * 100
                 }
                 changeLabel="vs same days last month"
+                changeLabelShort="vs last month"
                 footnote={`On pace for ${currency(projectSpending(month), { cents: false })} by month end.`}
               />
               <MetricCard
@@ -173,7 +175,9 @@ export function Overview() {
                 signed
                 change={gain.percent}
                 changeLabel="market movement this month"
-                footnote="Contributions excluded — this is market movement only."
+                changeLabelShort="this month"
+                hint="Change in portfolio value this month with transfers in removed, so a contribution never reads as a gain."
+                footnote="Contributions excluded — market movement only."
               />
               <MetricCard
                 label="Savings rate"
@@ -182,6 +186,8 @@ export function Overview() {
                 change={savingsRateDelta}
 changeUnit="points"
                 changeLabel="points vs last month"
+                changeLabelShort="vs last month"
+                hint="Income minus spending, divided by income, for the days elapsed this month. Transfers between your own accounts are excluded."
                 footnote={`${currency(month.net, { cents: false })} kept from ${currency(month.income, { cents: false })} earned.`}
               />
             </>
@@ -247,7 +253,6 @@ changeUnit="points"
                   transaction={transaction}
                   accountName={data.accountById.get(transaction.accountId)?.name}
                   onSelect={setSelected}
-                  today={data.anchor}
                   compact
                 />
               ))
@@ -307,7 +312,7 @@ changeUnit="points"
                       className="mt-10"
                       label={`${budget.label} budget`}
                     />
-                    <p className="mt-8 text-caption text-fog">{budget.message}</p>
+                    <p className="mt-8 text-caption text-ash">{budget.message}</p>
                   </Link>
                 ))
               )}
@@ -397,7 +402,7 @@ changeUnit="points"
                     </span>
                   </div>
                   <ProgressBar value={goal.progress} className="mt-10" label={goal.name} />
-                  <p className="mono-data mt-8 text-[10px] text-fog">
+                  <p className="mono-data mt-8 text-[10px] text-ash">
                     {goal.progress.toFixed(0)}% · on track for {goal.estimatedCompletion}
                   </p>
                 </li>

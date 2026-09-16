@@ -38,13 +38,13 @@ export function AccountCard({ account, series, lastActivity, today, className }:
         <div className="flex items-start justify-between gap-12">
           <div className="min-w-0">
             <p className="truncate text-body-sm text-cloud">{account.name}</p>
-            <p className="mono-data mt-6 text-[10px] text-fog">
+            <p className="mono-data mt-6 text-[10px] text-ash">
               {ACCOUNT_KIND_LABEL[account.kind]} · {account.institution} ·· {account.mask}
             </p>
           </div>
           <IconChevronRight
             size={15}
-            className="mt-2 shrink-0 text-fog transition-transform duration-200 ease-[var(--ease-state)] group-hover:translate-x-2 group-hover:text-cloud"
+            className="mt-2 shrink-0 text-ash transition-transform duration-200 ease-[var(--ease-state)] group-hover:translate-x-2 group-hover:text-cloud"
           />
         </div>
 
@@ -53,7 +53,7 @@ export function AccountCard({ account, series, lastActivity, today, className }:
             <p className="font-lyon-display text-title leading-none text-cloud sm:text-[26px]">
               <Amount value={account.balance} signed={isCredit} />
             </p>
-            <p className="mt-8 truncate text-caption text-fog">
+            <p className="mt-8 truncate text-caption text-ash">
               {isCredit && utilisation !== null
                 ? `${Math.round(utilisation)}% of ${currency(account.creditLimit!, { cents: false })} limit`
                 : account.apy
@@ -67,7 +67,7 @@ export function AccountCard({ account, series, lastActivity, today, className }:
         </div>
 
         {lastActivity && (
-          <p className="mono-data border-t border-hairline pt-12 text-[10px] text-fog">
+          <p className="mono-data border-t border-hairline pt-12 text-[10px] text-ash">
             Last activity {relativeDay(lastActivity, today)}
           </p>
         )}

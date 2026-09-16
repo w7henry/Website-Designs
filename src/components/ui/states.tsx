@@ -28,7 +28,7 @@ export function EmptyState({
       )}
     >
       {icon && (
-        <span className="mb-2 inline-flex size-40 items-center justify-center rounded-full border border-hairline text-fog">
+        <span className="mb-2 inline-flex size-40 items-center justify-center rounded-full border border-hairline text-ash">
           {icon}
         </span>
       )}
@@ -40,28 +40,42 @@ export function EmptyState({
 }
 
 export function ErrorState({
+  eyebrow = 'Something went wrong',
   title = 'We could not load this',
   body = 'The data did not come back. Nothing has been changed, and trying again usually settles it.',
+  retryLabel = 'Try again',
   onRetry,
+  secondary,
 }: {
+  eyebrow?: string;
   title?: string;
   body?: string;
+  retryLabel?: string;
   onRetry?: () => void;
+  secondary?: ReactNode;
 }) {
   return (
-    <EmptyState
-      icon={<IconAlert size={18} />}
-      title={title}
-      body={body}
-      action={
-        onRetry && (
-          <Button tone="ghost" onClick={onRetry}>
-            <IconRefresh size={15} />
-            Try again
-          </Button>
-        )
-      }
-    />
+    <div className="flex min-h-[58vh] items-center justify-center px-8">
+      <div className="max-w-[460px] text-center">
+        <span className="mb-16 inline-flex size-40 items-center justify-center rounded-full border border-hairline text-ash">
+          <IconAlert size={18} />
+        </span>
+        <p className="mono-label">{eyebrow}</p>
+        <h2 className="mt-14 font-lyon-display text-[32px] leading-[1.08] text-cloud sm:text-heading-lg">
+          {title}
+        </h2>
+        <p className="mt-16 text-body-sm leading-relaxed text-ash">{body}</p>
+        <div className="mt-24 flex flex-wrap items-center justify-center gap-10">
+          {onRetry && (
+            <Button tone="primary" onClick={onRetry}>
+              <IconRefresh size={15} />
+              {retryLabel}
+            </Button>
+          )}
+          {secondary}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -87,29 +101,20 @@ export class ErrorBoundary extends Component<BoundaryProps, BoundaryState> {
   render() {
     if (!this.state.error) return this.props.children;
     return (
-      <div className="flex min-h-[60vh] items-center justify-center px-24">
-        <div className="max-w-[440px] text-center">
-          <p className="mono-label">Something went wrong</p>
-          <h1 className="mt-16 font-lyon-display text-heading-lg leading-none text-cloud">
-            This screen stopped responding.
-          </h1>
-          <p className="mt-16 text-body-sm leading-relaxed text-ash">
-            Your accounts and data are untouched. Reloading the workspace will bring you back to
-            where you were.
-          </p>
-          <div className="mt-24 flex items-center justify-center gap-10">
-            <Button tone="primary" onClick={() => window.location.reload()}>
-              Reload workspace
-            </Button>
-            <Link
-              to="/dashboard"
-              className="text-body-sm text-ash underline-offset-4 transition-colors hover:text-cloud hover:underline"
-            >
-              Back to overview
-            </Link>
-          </div>
-        </div>
-      </div>
+      <ErrorState
+        title="This screen stopped responding."
+        body="Your accounts and data are untouched. Reloading the workspace will bring you back to where you were."
+        retryLabel="Reload workspace"
+        onRetry={() => window.location.reload()}
+        secondary={
+          <Link
+            to="/dashboard"
+            className="text-body-sm text-ash underline-offset-4 transition-colors hover:text-cloud hover:underline"
+          >
+            Back to overview
+          </Link>
+        }
+      />
     );
   }
 }

@@ -40,10 +40,10 @@ export function BudgetCard({
         </div>
         <span
           className={cn(
-            'mono-data shrink-0 rounded-full px-8 py-2 text-[9px]',
+            'mono-data shrink-0 rounded-full px-8 py-2 text-[10px]',
             budget.state === 'over'
               ? 'border border-orchid-bloom/40 text-orchid-bloom'
-              : 'bg-glass text-fog',
+              : 'bg-glass text-ash',
           )}
         >
           {stateCopy[budget.state]}
@@ -55,7 +55,7 @@ export function BudgetCard({
           <span className="font-lyon-display text-title leading-none text-cloud">
             <Amount value={budget.spent} cents={false} />
           </span>
-          <span className="tnum text-body-sm text-fog">
+          <span className="tnum text-body-sm text-ash">
             / {currency(budget.limit, { cents: false })}
           </span>
         </p>
@@ -77,14 +77,14 @@ export function BudgetCard({
           )}
         </div>
 
-        <p className="mt-12 text-caption leading-snug text-fog">{budget.message}</p>
+        <p className="mt-12 text-caption leading-snug text-ash">{budget.message}</p>
       </div>
 
       {onEdit && (
         <button
           type="button"
           onClick={() => onEdit(budget)}
-          className="mono-data self-start text-[10px] text-fog underline-offset-4 transition-colors hover:text-cloud hover:underline"
+          className="mono-data self-start text-[10px] text-ash underline-offset-4 transition-colors hover:text-cloud hover:underline"
         >
           Adjust limit
         </button>

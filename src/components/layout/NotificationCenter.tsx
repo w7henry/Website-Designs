@@ -51,7 +51,7 @@ function NotificationItem({
             'inline-flex size-28 items-center justify-center rounded-lg border',
             notification.priority === 'high'
               ? 'border-hairline-strong text-cloud'
-              : 'border-hairline text-fog',
+              : 'border-hairline text-ash',
           )}
         >
           <Icon size={14} />
@@ -68,12 +68,12 @@ function NotificationItem({
           <span className={cn('truncate text-body-sm', unread ? 'text-cloud' : 'text-ash')}>
             {notification.title}
           </span>
-          <span className="mono-data shrink-0 text-[9px] text-fog">
+          <span className="mono-data shrink-0 text-[10px] text-ash">
             {relativeTime(notification.at, data.anchorDate)}
           </span>
         </span>
-        <span className="mt-4 block text-caption leading-relaxed text-fog">{notification.body}</span>
-        <span className="mono-data mt-6 block text-[9px] text-fog">
+        <span className="mt-4 block text-caption leading-relaxed text-ash">{notification.body}</span>
+        <span className="mono-data mt-6 block text-[10px] text-ash">
           {KIND_LABEL[notification.kind]}
         </span>
       </span>
@@ -139,7 +139,7 @@ export function NotificationCenter() {
               <button
                 type="button"
                 onClick={markAllRead}
-                className="mono-data text-[10px] text-fog underline-offset-4 transition-colors hover:text-cloud hover:underline"
+                className="mono-data text-[10px] text-ash underline-offset-4 transition-colors hover:text-cloud hover:underline"
               >
                 Mark all read
               </button>

@@ -18,7 +18,7 @@ export function GoalCard({
         <div className="flex items-start justify-between gap-12">
           <div className="min-w-0">
             <p className="truncate text-body-sm text-cloud">{goal.name}</p>
-            <p className="mono-data mt-6 text-[10px] text-fog">{goal.accountName}</p>
+            <p className="mono-data mt-6 text-[10px] text-ash">{goal.accountName}</p>
           </div>
           <span className="tnum shrink-0 font-roboto-mono text-[11px] text-ash">
             {goal.progress.toFixed(0)}%
@@ -29,7 +29,7 @@ export function GoalCard({
           <span className="font-lyon-display text-title leading-none text-cloud sm:text-[26px]">
             <Amount value={goal.current} cents={false} />
           </span>
-          <span className="tnum text-body-sm text-fog">
+          <span className="tnum text-body-sm text-ash">
             / {currency(goal.target, { cents: false })}
           </span>
         </p>
@@ -65,7 +65,7 @@ export function GoalCard({
       </div>
 
       <div className="flex items-center justify-between gap-12 border-t border-hairline pt-16">
-        <p className="min-w-0 truncate text-caption text-fog">
+        <p className="min-w-0 truncate text-caption text-ash">
           {reached ? goal.note : `${monthsToHuman(goal.monthsToGo)} to go`}
         </p>
         <Button size="sm" tone="ghost" onClick={() => onContribute(goal)} disabled={reached}>

@@ -51,7 +51,7 @@ export function Accounts() {
             <span className="mono-label mr-8 inline">Liabilities</span>
             <Amount value={-totals.liabilities} signed cents={false} className="text-cloud" />
           </span>
-          <span className="text-body-sm text-fog">
+          <span className="text-body-sm text-ash">
             {data.accounts.length} accounts across {institutions} institutions
           </span>
         </p>
@@ -68,7 +68,7 @@ export function Accounts() {
               <header className="flex items-baseline justify-between gap-16 border-b border-hairline px-8 pb-10 pt-20 sm:px-12">
                 <div className="flex items-baseline gap-12">
                   <h2 className="mono-label">{group.label}</h2>
-                  <span className="text-caption text-fog">{group.blurb}</span>
+                  <span className="text-caption text-ash">{group.blurb}</span>
                 </div>
                 <span className="tnum text-body-sm text-cloud">
                   <Amount value={subtotal} signed={subtotal < 0} />
@@ -120,7 +120,7 @@ export function Accounts() {
               {[...new Set(data.accounts.map((a) => a.institution))].map((institution) => (
                 <li key={institution} className="flex items-center justify-between gap-12">
                   <span className="truncate text-body-sm text-ash">{institution}</span>
-                  <span className="mono-data shrink-0 text-[10px] text-fog">
+                  <span className="mono-data shrink-0 text-[10px] text-ash">
                     {(() => {
                       const count = data.accounts.filter(
                         (a) => a.institution === institution,
@@ -131,7 +131,7 @@ export function Accounts() {
                 </li>
               ))}
             </ul>
-            <p className="text-caption leading-relaxed text-fog">
+            <p className="text-caption leading-relaxed text-ash">
               Balances refreshed today at 6:05am. Nothing here is delayed.
             </p>
           </Card>

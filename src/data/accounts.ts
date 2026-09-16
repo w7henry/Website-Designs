@@ -20,6 +20,7 @@ export const ACCOUNTS: Account[] = [
     openedAt: '2019-03-14',
     apy: 0.01,
     blurb: 'Salary lands here. Bills and card autopay leave from here.',
+    short: 'Salary and bills',
   },
   {
     id: ACCOUNT_IDS.savings,
@@ -31,6 +32,7 @@ export const ACCOUNTS: Account[] = [
     openedAt: '2019-03-14',
     apy: 4.15,
     blurb: 'High-yield. Holds the car and travel goals.',
+    short: 'High-yield savings',
   },
   {
     id: ACCOUNT_IDS.reserve,
@@ -42,6 +44,7 @@ export const ACCOUNTS: Account[] = [
     openedAt: '2023-01-09',
     apy: 4.35,
     blurb: 'Ring-fenced. Six months of essential spending is the target.',
+    short: 'Ring-fenced reserve',
   },
   {
     id: ACCOUNT_IDS.invest,
@@ -52,6 +55,7 @@ export const ACCOUNTS: Account[] = [
     balance: 86420.18,
     openedAt: '2021-06-02',
     blurb: 'Long-horizon portfolio. Auto-invests $2,000 on the 3rd.',
+    short: 'Long-horizon portfolio',
   },
   {
     id: ACCOUNT_IDS.card,
@@ -64,6 +68,7 @@ export const ACCOUNTS: Account[] = [
     apr: 21.24,
     creditLimit: 18000,
     blurb: 'Day-to-day spending. Paid in full on the 10th.',
+    short: 'Paid in full monthly',
   },
 ];
 

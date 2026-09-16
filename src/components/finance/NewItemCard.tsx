@@ -28,7 +28,7 @@ export function NewItemCard({
         <IconPlus size={15} />
       </span>
       <span className="text-body-sm text-cloud">{title}</span>
-      <span className="max-w-[240px] text-caption leading-snug text-fog">{body}</span>
+      <span className="max-w-[240px] text-caption leading-snug text-ash">{body}</span>
     </button>
   );
 }

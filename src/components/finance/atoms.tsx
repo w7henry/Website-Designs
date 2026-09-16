@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '../../lib/cn';
+import { useCountUp } from '../../lib/hooks';
 import { currency, initials, signedCurrency, splitCurrency } from '../../lib/format';
 import { categoryTint, type CategoryId } from '../../data';
 import { useStore } from '../../state/store';
@@ -26,7 +27,7 @@ export function Amount({
   const { preferences } = useStore();
   if (preferences.hideBalances) {
     return (
-      <span className={cn('tnum tracking-[0.12em] text-fog', className)} aria-label="Hidden">
+      <span className={cn('tnum tracking-[0.12em] text-ash', className)} aria-label="Hidden">
         ••••
       </span>
     );
@@ -37,6 +38,23 @@ export function Amount({
       {signed ? signedCurrency(value, { cents: rounded }) : currency(value, { cents: rounded })}
     </span>
   );
+}
+
+/**
+ * Eases between values. Reserved for figures the user just changed — a
+ * goal top-up, an edited budget — where continuity aids comprehension.
+ */
+export function AnimatedAmount({
+  value,
+  cents = true,
+  className,
+}: {
+  value: number;
+  cents?: boolean;
+  className?: string;
+}) {
+  const eased = useCountUp(value);
+  return <Amount value={eased} cents={cents} className={className} />;
 }
 
 /** The hero figure — serif display, with the cents set back. */
@@ -54,7 +72,7 @@ export function DisplayAmount({
   const { preferences } = useStore();
   if (preferences.hideBalances) {
     return (
-      <span className={cn('font-lyon-display tracking-[0.08em] text-fog', className)}>••••••</span>
+      <span className={cn('font-lyon-display tracking-[0.08em] text-ash', className)}>••••••</span>
     );
   }
   const { sign, whole, cents } = splitCurrency(value, { plus: signed });
@@ -95,7 +113,7 @@ export function MerchantMark({
         className,
       )}
     >
-      <span style={{ fontSize: Math.max(9, Math.round(size * 0.3)) }}>{initials(name)}</span>
+      <span style={{ fontSize: Math.max(10, Math.round(size * 0.3)) }}>{initials(name)}</span>
       {categoryId && (
         <span
           className="absolute -bottom-1 -right-1 size-8 rounded-full border-2 border-obsidian"
@@ -129,7 +147,7 @@ export function KeyValue({
 }) {
   return (
     <div className={cn('flex items-baseline justify-between gap-16 py-10', className)}>
-      <dt className="shrink-0 text-body-sm text-fog">{label}</dt>
+      <dt className="shrink-0 text-body-sm text-ash">{label}</dt>
       <dd className="min-w-0 text-right text-body-sm text-cloud">{children}</dd>
     </div>
   );

@@ -33,7 +33,7 @@ export function AccountRow({
     ? `${Math.round(utilisation)}% of ${currency(account.creditLimit!, { cents: false })} limit`
     : account.apy
       ? `${account.apy.toFixed(2)}% APY`
-      : account.blurb;
+      : account.short;
 
   return (
     <Link
@@ -47,15 +47,15 @@ export function AccountRow({
 
       <span className="min-w-0 flex-1">
         <span className="block truncate text-body-sm text-cloud">{account.name}</span>
-        <span className="mono-data mt-4 block truncate text-[10px] text-fog">
+        <span className="mono-data mt-4 block truncate text-[10px] text-ash">
           {ACCOUNT_KIND_LABEL[account.kind]} · {account.institution} ·· {account.mask}
         </span>
       </span>
 
-      <span className="hidden min-w-0 flex-1 text-caption text-fog lg:block">
+      <span className="hidden min-w-0 flex-1 text-caption text-ash lg:block">
         <span className="block truncate">{context}</span>
         {lastActivity && (
-          <span className="mono-data mt-4 block text-[10px] text-fog">
+          <span className="mono-data mt-4 block text-[10px] text-ash">
             Last activity {relativeDay(lastActivity, today)}
           </span>
         )}
@@ -69,14 +69,14 @@ export function AccountRow({
         <span className="block text-body-sm text-cloud">
           <Amount value={account.balance} signed={isCredit} />
         </span>
-        <span className="mono-data mt-4 block truncate text-[10px] text-fog lg:hidden">
+        <span className="mono-data mt-4 block truncate text-[10px] text-ash lg:hidden">
           {context}
         </span>
       </span>
 
       <IconChevronRight
         size={15}
-        className="shrink-0 text-fog transition-transform duration-200 ease-[var(--ease-state)] group-hover:translate-x-2 group-hover:text-cloud"
+        className="shrink-0 text-ash transition-transform duration-200 ease-[var(--ease-state)] group-hover:translate-x-2 group-hover:text-cloud"
       />
     </Link>
   );

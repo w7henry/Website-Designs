@@ -142,10 +142,15 @@ export function addMonths(date: Date, months: number): Date {
   return d;
 }
 
-/** Initials for an avatar fallback — "Whole Foods Market" → "WF" */
+/**
+ * Monogram for a merchant mark: "Whole Foods Market" → "WF", "Notion" → "N".
+ * A single word keeps a single letter — two letters of one word reads as a
+ * word itself ("NO", "US") rather than as a mark.
+ */
 export function initials(name: string): string {
   const words = name.replace(/[^A-Za-z0-9 ]/g, ' ').trim().split(/\s+/);
-  if (words.length === 1) return words[0]!.slice(0, 2).toUpperCase();
+  if (words.length === 0 || !words[0]) return '?';
+  if (words.length === 1) return words[0]![0]!.toUpperCase();
   return (words[0]![0]! + words[1]![0]!).toUpperCase();
 }
 

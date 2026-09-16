@@ -20,7 +20,7 @@ const MODULES = [
   {
     title: 'Spending',
     tint: 'var(--color-iris-gleam)',
-    ink: 'var(--color-pure)',
+    ink: 'var(--color-void)',
     body: 'Every charge categorised the moment it lands, with the pace of the month drawn against each limit rather than a flat percentage.',
   },
   {
@@ -144,7 +144,7 @@ export function Landing() {
 
           <div className="animate-reveal mx-auto mt-32 max-w-[560px] text-left">
             <AskOrigin compact />
-            <p className="mt-10 text-center text-caption text-fog">
+            <p className="mt-10 text-center text-caption text-ash">
               Ask in plain words. Origin answers from your own ledger.
             </p>
           </div>
@@ -160,7 +160,7 @@ export function Landing() {
                   <span className="block font-lyon-display text-subheading leading-none">
                     {award.name}
                   </span>
-                  <span className="mono-data mt-4 block text-[9px] text-fog">{award.note}</span>
+                  <span className="mono-data mt-4 block text-[10px] text-ash">{award.note}</span>
                 </span>
                 <Laurel flipped />
               </span>
@@ -201,14 +201,14 @@ export function Landing() {
                       <p className="mt-10 font-lyon-display text-figure leading-none text-cloud">
                         {percent(month.savingsRate, 1)}
                       </p>
-                      <p className="mt-6 text-caption text-fog">kept of what was earned</p>
+                      <p className="mt-6 text-caption text-ash">kept of what was earned</p>
                     </div>
                     <div className="text-right">
                       <MonoLabel>Spent</MonoLabel>
                       <p className="tnum mt-10 text-subheading text-cloud">
                         {currency(month.spending, { cents: false })}
                       </p>
-                      <p className="mt-6 text-caption text-fog">
+                      <p className="mt-6 text-caption text-ash">
                         of {currency(month.income, { cents: false })} in
                       </p>
                     </div>
@@ -261,7 +261,7 @@ export function Landing() {
               <h3 className="font-lyon-display text-[32px] leading-none sm:text-heading-lg">
                 {module.title}
               </h3>
-              <p className="mt-20 text-body leading-relaxed" style={{ opacity: 0.82 }}>
+              <p className="mt-20 text-body leading-relaxed" style={{ opacity: 0.78 }}>
                 {module.body}
               </p>
             </article>
@@ -328,7 +328,7 @@ export function Landing() {
             <IconLogo size={20} className="text-pure" />
             <span className="font-lyon-display text-subheading leading-none">Origin</span>
           </div>
-          <p className="max-w-[440px] text-caption leading-relaxed text-fog">
+          <p className="max-w-[440px] text-caption leading-relaxed text-ash">
             Origin is a design exercise built on a synthetic ledger. Figures are derived, internally
             consistent, and not financial advice.
           </p>

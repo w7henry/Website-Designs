@@ -292,7 +292,7 @@ export function Avatar({
   return (
     <span
       aria-hidden="true"
-      style={{ width: size, height: size, fontSize: Math.max(9, Math.round(size * 0.3)) }}
+      style={{ width: size, height: size, fontSize: Math.max(10, Math.round(size * 0.3)) }}
       className={cn(
         'inline-flex shrink-0 items-center justify-center rounded-lg border border-hairline bg-graphite',
         'font-roboto-mono font-medium uppercase tracking-[0.04em] text-cloud',
@@ -342,8 +342,8 @@ export function Change({
 
   if (flat) {
     return (
-      <span className={cn('mono-data inline-flex items-center gap-4 text-fog', className)}>
-        <span aria-hidden="true" className="text-[9px] leading-none">
+      <span className={cn('mono-data inline-flex items-center gap-4 text-ash', className)}>
+        <span aria-hidden="true" className="text-[10px] leading-none">
           —
         </span>
         {flatLabel}
@@ -355,11 +355,11 @@ export function Change({
     <span
       className={cn(
         'mono-data inline-flex items-center gap-4 tabular-nums',
-        muted ? 'text-fog' : up ? 'text-cloud' : 'text-ash',
+        muted ? 'text-ash' : up ? 'text-cloud' : 'text-ash',
         className,
       )}
     >
-      <span aria-hidden="true" className="text-[9px] leading-none">
+      <span aria-hidden="true" className="text-[10px] leading-none">
         {up ? '▲' : '▼'}
       </span>
       {children}
@@ -373,18 +373,22 @@ export function Tooltip({
   content,
   children,
   side = 'top',
+  className = 'inline-flex',
 }: {
   content: ReactNode;
   children: ReactNode;
   side?: 'top' | 'bottom';
+  /** Owns the display utility so a caller can hide the whole tooltip. */
+  className?: string;
 }) {
   return (
-    <span className="group/tooltip relative inline-flex">
+    <span className={cn('group/tooltip relative', className)}>
       {children}
       <span
         role="tooltip"
         className={cn(
-          'pointer-events-none absolute left-1/2 z-50 w-max max-w-[220px] -translate-x-1/2 rounded-lg',
+          'pointer-events-none absolute left-1/2 z-50 w-max -translate-x-1/2 rounded-lg',
+          'max-w-[min(220px,calc(100vw-32px))]',
           'border border-hairline bg-graphite px-10 py-6 text-caption text-cloud',
           'opacity-0 transition-opacity duration-200 ease-[var(--ease-state)]',
           'group-hover/tooltip:opacity-100 group-focus-within/tooltip:opacity-100',

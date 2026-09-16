@@ -2,7 +2,7 @@ import type { Transaction } from '../../data';
 import { categoryLabel } from '../../data';
 import { cn } from '../../lib/cn';
 import { formatDay, relativeDay } from '../../lib/format';
-import { Skeleton } from '../ui/primitives';
+import { Badge, Skeleton } from '../ui/primitives';
 import { IconRepeat } from '../ui/icons';
 import { Amount, MerchantMark } from './atoms';
 
@@ -10,7 +10,6 @@ interface TransactionRowProps {
   transaction: Transaction;
   accountName?: string;
   onSelect: (transaction: Transaction) => void;
-  today: string;
   /** Dense list used in side panels and the overview. */
   compact?: boolean;
   showAccount?: boolean;
@@ -21,7 +20,6 @@ export function TransactionRow({
   transaction,
   accountName,
   onSelect,
-  today,
   compact = false,
   showAccount = true,
   selected = false,
@@ -50,30 +48,31 @@ export function TransactionRow({
         <span className="flex items-center gap-8">
           <span className="truncate text-body-sm text-cloud">{transaction.merchant}</span>
           {transaction.recurring && (
-            <IconRepeat size={12} className="shrink-0 text-fog" aria-label="Recurring" />
+            <IconRepeat size={12} className="shrink-0 text-ash" aria-label="Recurring" />
           )}
           {transaction.pending && (
-            <span className="mono-data shrink-0 rounded-full bg-glass px-6 py-1 text-[9px] text-fog">
-              Pending
-            </span>
+            <Badge className="shrink-0 px-6 py-1">Pending</Badge>
           )}
         </span>
-        <span className="mt-4 flex items-center gap-6 truncate text-caption text-fog">
+        <span className="mt-4 flex items-center gap-6 truncate text-caption text-ash">
           <span className="truncate">{categoryLabel(transaction.categoryId)}</span>
+          {/* The account is dropped on a phone — the category needs the room. */}
           {showAccount && accountName && (
             <>
-              <span aria-hidden="true">·</span>
-              <span className="truncate">{accountName}</span>
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·
+              </span>
+              <span className="hidden truncate sm:inline">{accountName}</span>
             </>
           )}
         </span>
       </span>
 
       <span className="hidden w-52 shrink-0 text-right sm:block">
-        <span className="mono-data text-[10px] text-fog">{formatDay(transaction.date)}</span>
+        <span className="mono-data text-[10px] text-ash">{formatDay(transaction.date)}</span>
       </span>
 
-      <span className="w-92 shrink-0 text-right sm:w-108">
+      <span className="w-88 shrink-0 text-right sm:w-108">
         <span
           className={cn(
             'block text-body-sm tabular-nums',
@@ -81,9 +80,6 @@ export function TransactionRow({
           )}
         >
           <Amount value={transaction.amount} signed />
-        </span>
-        <span className="mono-data mt-4 block text-[9px] text-fog sm:hidden">
-          {relativeDay(transaction.date, today)}
         </span>
       </span>
     </button>
@@ -136,7 +132,7 @@ export function TransactionGroups({
           <section key={group.date}>
             <header className="flex items-baseline justify-between gap-16 border-b border-hairline px-8 pb-8 pt-20 sm:px-12">
               <h3 className="mono-label">{relativeDay(group.date, today)}</h3>
-              <span className="mono-data text-[10px] text-fog">
+              <span className="mono-data text-[10px] text-ash">
                 <Amount value={dayTotal} signed cents={false} />
               </span>
             </header>
@@ -147,7 +143,6 @@ export function TransactionGroups({
                   transaction={transaction}
                   accountName={accountNameFor(transaction.accountId)}
                   onSelect={onSelect}
-                  today={today}
                   compact={compact}
                   showAccount={showAccount}
                   selected={selectedId === transaction.id}

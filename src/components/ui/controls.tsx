@@ -27,7 +27,7 @@ export function Field({ label, hint, children, htmlFor, className }: FieldProps)
         {label}
       </label>
       {children}
-      {hint && <p className="text-caption text-fog">{hint}</p>}
+      {hint && <p className="text-caption text-ash">{hint}</p>}
     </div>
   );
 }
@@ -43,7 +43,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       ref={ref}
       className={cn(
         'h-40 w-full rounded-lg border bg-obsidian px-12 text-body-sm text-cloud',
-        'transition-colors duration-200 ease-[var(--ease-state)] placeholder:text-fog',
+        'transition-colors duration-200 ease-[var(--ease-state)] placeholder:text-ash',
         'hover:border-hairline-strong focus:border-hairline-strong',
         invalid ? 'border-orchid-bloom/50' : 'border-hairline',
         className,
@@ -62,7 +62,7 @@ export function Textarea({
       className={cn(
         'min-h-80 w-full resize-y rounded-lg border border-hairline bg-obsidian px-12 py-10',
         'text-body-sm leading-relaxed text-cloud transition-colors duration-200',
-        'placeholder:text-fog hover:border-hairline-strong focus:border-hairline-strong',
+        'placeholder:text-ash hover:border-hairline-strong focus:border-hairline-strong',
         className,
       )}
       {...rest}
@@ -82,7 +82,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
 ) {
   return (
     <div className={cn('relative flex items-center', className)}>
-      <IconSearch size={15} className="pointer-events-none absolute left-12 text-fog" />
+      <IconSearch size={15} className="pointer-events-none absolute left-12 text-ash" />
       <input
         ref={ref}
         type="search"
@@ -92,7 +92,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
         className={cn(
           'h-40 w-full rounded-lg border border-hairline bg-obsidian pl-34 pr-34',
           'text-body-sm text-cloud transition-colors duration-200 ease-[var(--ease-state)]',
-          'placeholder:text-fog hover:border-hairline-strong focus:border-hairline-strong',
+          'placeholder:text-ash hover:border-hairline-strong focus:border-hairline-strong',
           '[&::-webkit-search-cancel-button]:appearance-none',
         )}
         {...rest}
@@ -105,7 +105,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
             onValueChange('');
             onClear?.();
           }}
-          className="absolute right-8 inline-flex size-24 items-center justify-center rounded-md text-fog transition-colors hover:bg-glass hover:text-cloud"
+          className="absolute right-8 inline-flex size-24 items-center justify-center rounded-md text-ash transition-colors hover:bg-glass hover:text-cloud"
         >
           <IconClose size={13} />
         </button>
@@ -136,7 +136,7 @@ export function Switch({
         <label htmlFor={id} className="block text-body-sm text-cloud">
           {label}
         </label>
-        {description && <p className="mt-2 text-caption leading-relaxed text-fog">{description}</p>}
+        {description && <p className="mt-2 text-caption leading-relaxed text-ash">{description}</p>}
       </div>
       <button
         id={id}
@@ -208,65 +208,10 @@ export function SegmentedControl<T extends string>({
             className={cn(
               'mono-data rounded-md transition-colors duration-200 ease-[var(--ease-state)]',
               size === 'sm' ? 'h-24 px-8 text-[10px]' : 'h-28 px-12 text-[11px]',
-              active ? 'bg-pure text-void' : 'text-fog hover:bg-glass hover:text-cloud',
+              active ? 'bg-pure text-void' : 'text-ash hover:bg-glass hover:text-cloud',
             )}
           >
             {option.label}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ tabs */
-
-export function Tabs<T extends string>({
-  options,
-  value,
-  onChange,
-  label,
-  className,
-}: {
-  options: { value: T; label: string; count?: number }[];
-  value: T;
-  onChange: (next: T) => void;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      role="tablist"
-      aria-label={label}
-      className={cn('no-scrollbar -mb-px flex gap-24 overflow-x-auto border-b border-hairline', className)}
-    >
-      {options.map((option) => {
-        const active = option.value === value;
-        return (
-          <button
-            key={option.value}
-            role="tab"
-            type="button"
-            aria-selected={active}
-            onClick={() => onChange(option.value)}
-            className={cn(
-              'relative shrink-0 whitespace-nowrap pb-12 text-body-sm transition-colors duration-200',
-              active ? 'text-cloud' : 'text-fog hover:text-ash',
-            )}
-          >
-            {option.label}
-            {option.count !== undefined && (
-              <span className="ml-6 font-roboto-mono text-[10px] tabular-nums text-fog">
-                {option.count}
-              </span>
-            )}
-            <span
-              aria-hidden="true"
-              className={cn(
-                'absolute inset-x-0 -bottom-px h-px transition-colors duration-200',
-                active ? 'bg-pure' : 'bg-transparent',
-              )}
-            />
           </button>
         );
       })}
@@ -331,7 +276,7 @@ export function Select<T extends string>({
         </span>
         <IconChevronDown
           size={14}
-          className={cn('shrink-0 text-fog transition-transform duration-200', open && 'rotate-180')}
+          className={cn('shrink-0 text-ash transition-transform duration-200', open && 'rotate-180')}
         />
       </button>
 
@@ -375,7 +320,7 @@ export function Select<T extends string>({
                 </span>
                 <span className="flex shrink-0 items-center gap-8">
                   {option.meta && (
-                    <span className="font-roboto-mono text-[10px] tabular-nums text-fog">
+                    <span className="font-roboto-mono text-[10px] tabular-nums text-ash">
                       {option.meta}
                     </span>
                   )}
@@ -449,9 +394,9 @@ export function MenuItem({
         danger ? 'text-orchid-bloom hover:bg-orchid-bloom/10' : 'text-ash hover:bg-glass hover:text-cloud',
       )}
     >
-      {icon && <span className="shrink-0 text-fog">{icon}</span>}
+      {icon && <span className="shrink-0 text-ash">{icon}</span>}
       <span className="flex-1 truncate">{children}</span>
-      {meta && <span className="mono-data shrink-0 text-[10px] text-fog">{meta}</span>}
+      {meta && <span className="mono-data shrink-0 text-[10px] text-ash">{meta}</span>}
     </button>
   );
 }

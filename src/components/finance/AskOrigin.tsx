@@ -65,7 +65,7 @@ export function AskOrigin({
           value={value}
           onChange={(event) => setValue(event.target.value)}
           placeholder="Where am I overspending this month?"
-          className="h-28 min-w-0 flex-1 bg-transparent text-body-sm text-cloud outline-none placeholder:text-fog"
+          className="h-28 min-w-0 flex-1 bg-transparent text-body-sm text-cloud outline-none placeholder:text-ash"
         />
         <button
           type="submit"

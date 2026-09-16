@@ -12,10 +12,13 @@ export function InsightCard({
   insight,
   onDismiss,
   className,
+  lead = false,
 }: {
   insight: Insight;
   onDismiss?: (id: string) => void;
   className?: string;
+  /** The first insight on the Insights page carries more weight. */
+  lead?: boolean;
 }) {
   return (
     <Card className={cn('group relative flex h-full flex-col justify-between gap-16', className)}>
@@ -47,10 +50,24 @@ export function InsightCard({
           )}
         </div>
 
-        <p className="mt-14 font-lyon-display text-subheading leading-snug text-cloud sm:text-title">
+        <p
+          className={cn(
+            'mt-14 font-lyon-display leading-snug text-cloud',
+            lead
+              ? 'text-title sm:text-[28px] sm:leading-[1.15] lg:max-w-[720px]'
+              : 'text-subheading sm:text-title',
+          )}
+        >
           {insight.headline}
         </p>
-        <p className="mt-10 text-body-sm leading-relaxed text-ash">{insight.detail}</p>
+        <p
+          className={cn(
+            'mt-10 leading-relaxed text-ash',
+            lead ? 'text-body-sm sm:text-body lg:max-w-[720px]' : 'text-body-sm',
+          )}
+        >
+          {insight.detail}
+        </p>
       </div>
 
       {insight.href && insight.action && (

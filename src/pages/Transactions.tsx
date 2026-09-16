@@ -214,17 +214,17 @@ export function Transactions() {
 
           <div className="flex flex-wrap items-center justify-between gap-12 border-t border-hairline pt-12">
             <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
-              <span className="mono-data text-[10px] text-fog">
+              <span className="mono-data text-[10px] text-ash">
                 <IconFilter size={12} className="mr-4 inline align-[-2px]" />
                 {results.length.toLocaleString('en-US')} results
               </span>
-              <span className="mono-data text-[10px] text-fog">
+              <span className="mono-data text-[10px] text-ash">
                 In <span className="text-cloud">+{currency(totals.inflow, { cents: false })}</span>
               </span>
-              <span className="mono-data text-[10px] text-fog">
+              <span className="mono-data text-[10px] text-ash">
                 Out <span className="text-cloud">&minus;{currency(totals.outflow, { cents: false })}</span>
               </span>
-              <span className="mono-data text-[10px] text-fog">
+              <span className="mono-data text-[10px] text-ash">
                 <IconSort size={12} className="mr-4 inline align-[-2px]" />
                 {SORT_OPTIONS.find((o) => o.value === sort)?.label}
               </span>

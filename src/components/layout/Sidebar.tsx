@@ -82,10 +82,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             </span>
             <IconChevronRight
               size={14}
-              className="shrink-0 text-fog transition-transform duration-200 group-hover:translate-x-2 group-hover:text-cloud"
+              className="shrink-0 text-ash transition-transform duration-200 group-hover:translate-x-2 group-hover:text-cloud"
             />
           </p>
-          <p className="mono-data mt-8 text-[10px] text-fog">
+          <p className="mono-data mt-8 text-[10px] text-ash">
             {data.accounts.length} accounts linked
           </p>
         </Link>

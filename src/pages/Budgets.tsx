@@ -8,7 +8,7 @@ import {
   type BudgetStatus,
 } from '../data';
 import { currency, percent } from '../lib/format';
-import { useFirstLoad } from '../lib/hooks';
+import { useCountUp, useFirstLoad } from '../lib/hooks';
 import { useStore } from '../state/store';
 import { BudgetCard, BudgetCardSkeleton } from '../components/finance/BudgetCard';
 import { NewItemCard } from '../components/finance/NewItemCard';
@@ -69,6 +69,7 @@ export function Budgets() {
     return { limit, projected, used: limit === 0 ? 0 : (month.spending / limit) * 100 };
   }, [budgets, month.spending]);
 
+  const easedUsed = useCountUp(totals.used);
   const overCount = budgets.filter((b) => b.state === 'over').length;
   const aheadCount = budgets.filter((b) => b.state === 'ahead').length;
   const customised = Object.keys(budgetLimits).length > 0;
@@ -104,7 +105,7 @@ export function Budgets() {
         <div className="min-w-0 lg:w-[300px] lg:shrink-0">
           <MonoLabel>Used so far</MonoLabel>
           <p className="mt-12 font-lyon-display text-heading-lg leading-none text-cloud">
-            {percent(totals.used, 0)}
+            {percent(easedUsed, 0)}
           </p>
           <p className="mt-10 text-body-sm text-ash">
             <Amount value={month.spending} cents={false} /> of{' '}
@@ -129,10 +130,10 @@ export function Budgets() {
           </div>
 
           <div className="mt-12 flex flex-wrap items-center justify-between gap-x-20 gap-y-6">
-            <span className="mono-data text-[10px] text-fog">
+            <span className="mono-data text-[10px] text-ash">
               {Math.round(elapsed * 100)}% of the month elapsed
             </span>
-            <span className="mono-data text-[10px] text-fog">
+            <span className="mono-data text-[10px] text-ash">
               On pace for{' '}
               <span className="text-cloud">
                 {currency(projectSpending(month), { cents: false })}
@@ -155,7 +156,7 @@ export function Budgets() {
         <SectionHeading
           eyebrow={`${budgets.length} categories`}
           title="By category"
-          action={<MonoLabel>Marker shows today's pace</MonoLabel>}
+          action={<MonoLabel className="hidden sm:block">Marker shows today's pace</MonoLabel>}
         />
         <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-3">
           {loading
@@ -209,7 +210,7 @@ export function Budgets() {
                 onKeyDown={(event) => event.key === 'Enter' && saveEditor()}
               />
             </Field>
-            <p className="mt-16 text-caption leading-relaxed text-fog">
+            <p className="mt-16 text-caption leading-relaxed text-ash">
               You have spent {currency(editing.spent)} on{' '}
               {categoryLabel(editing.categoryId).toLowerCase()} so far this month. Over the last
               three months this category averaged{' '}

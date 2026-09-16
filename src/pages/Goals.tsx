@@ -11,7 +11,7 @@ import { useFirstLoad } from '../lib/hooks';
 import { useStore } from '../state/store';
 import { GoalCard, GoalCardSkeleton } from '../components/finance/GoalCard';
 import { NewItemCard } from '../components/finance/NewItemCard';
-import { Amount, SectionHeading } from '../components/finance/atoms';
+import { Amount, AnimatedAmount, SectionHeading } from '../components/finance/atoms';
 import { Button, Card, MonoLabel, ProgressBar } from '../components/ui/primitives';
 import { Modal } from '../components/ui/overlays';
 import { Field, Input } from '../components/ui/controls';
@@ -71,7 +71,7 @@ export function Goals() {
         <div className="lg:w-[300px] lg:shrink-0">
           <MonoLabel>Saved towards goals</MonoLabel>
           <p className="mt-12 font-lyon-display text-heading-lg leading-none text-cloud">
-            <Amount value={totals.saved} cents={false} />
+            <AnimatedAmount value={totals.saved} cents={false} />
           </p>
           <p className="mt-10 text-body-sm text-ash">
             of {currency(totals.target, { cents: false })} targeted
@@ -115,7 +115,7 @@ export function Goals() {
         <SectionHeading
           eyebrow="Each goal is backed by a real balance"
           title="In progress"
-          action={<MonoLabel>Funded from linked accounts</MonoLabel>}
+          action={<MonoLabel className="hidden sm:block">Funded from linked accounts</MonoLabel>}
         />
         <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-3">
           {loading
@@ -203,7 +203,7 @@ export function Goals() {
               />
             </Field>
 
-            <p className="rounded-lg border border-hairline bg-abyss px-12 py-12 text-caption leading-relaxed text-fog">
+            <p className="rounded-lg border border-hairline bg-abyss px-12 py-12 text-caption leading-relaxed text-ash">
               {currency(active.remaining, { cents: false })} remaining. At{' '}
               {currency(Number.parseFloat(monthly) || active.monthlyContribution, { cents: false })} a
               month you reach {currency(active.target, { cents: false })} in{' '}

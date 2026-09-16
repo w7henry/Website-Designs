@@ -105,7 +105,7 @@ function ProfileSection() {
         title="Profile"
         description="How you appear across Origin. Changing your email starts a verification step."
         footer={
-          <p className="flex items-center gap-8 text-caption text-fog">
+          <p className="flex items-center gap-8 text-caption text-ash">
             <IconCheck size={13} />
             Saved automatically as you type
           </p>
@@ -199,12 +199,12 @@ function SecuritySection() {
             <li key={session.device} className="flex items-center justify-between gap-16 py-14">
               <div className="min-w-0">
                 <p className="truncate text-body-sm text-cloud">{session.device}</p>
-                <p className="mono-data mt-4 text-[10px] text-fog">
+                <p className="mono-data mt-4 text-[10px] text-ash">
                   {session.place} · {session.when}
                 </p>
               </div>
               {session.current ? (
-                <span className="mono-data shrink-0 rounded-full bg-glass px-8 py-2 text-[9px] text-ash">
+                <span className="mono-data shrink-0 rounded-full bg-glass px-8 py-2 text-[10px] text-ash">
                   This device
                 </span>
               ) : (
@@ -271,13 +271,13 @@ function ConnectedSection() {
             <li key={account.id} className="flex items-center justify-between gap-16 py-14">
               <div className="min-w-0">
                 <p className="truncate text-body-sm text-cloud">{account.name}</p>
-                <p className="mono-data mt-4 text-[10px] text-fog">
+                <p className="mono-data mt-4 text-[10px] text-ash">
                   {account.institution} · {ACCOUNT_KIND_LABEL[account.kind]} ·· {account.mask} ·
                   linked {formatDayYear(account.openedAt)}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-10">
-                <span className="mono-data rounded-full bg-glass px-8 py-2 text-[9px] text-ash">
+                <span className="mono-data rounded-full bg-glass px-8 py-2 text-[10px] text-ash">
                   Connected
                 </span>
                 <Button size="sm" tone="quiet">
@@ -348,7 +348,7 @@ function AppearanceSection() {
                 />
               ))}
             </div>
-            <p className="mt-12 text-caption text-fog">The only theme, and the one it was drawn in.</p>
+            <p className="mt-12 text-caption text-ash">The only theme, and the one it was drawn in.</p>
           </div>
           <div className="flex-1 rounded-xl border border-dashed border-hairline p-16 opacity-55">
             <span className="text-body-sm text-ash">Daylight</span>
@@ -357,7 +357,7 @@ function AppearanceSection() {
                 <span key={tone} className={cn('h-20 flex-1 rounded', tone)} />
               ))}
             </div>
-            <p className="mt-12 text-caption text-fog">In design. Not yet available.</p>
+            <p className="mt-12 text-caption text-ash">In design. Not yet available.</p>
           </div>
         </div>
       </Panel>
@@ -392,7 +392,7 @@ function PrivacySection() {
             onChange={(next) => setPreference('hideBalances', next)}
           />
         </div>
-        <p className="mt-20 flex items-start gap-10 rounded-lg border border-hairline bg-abyss px-14 py-14 text-caption leading-relaxed text-fog">
+        <p className="mt-20 flex items-start gap-10 rounded-lg border border-hairline bg-abyss px-14 py-14 text-caption leading-relaxed text-ash">
           <IconShield size={15} className="mt-1 shrink-0" />
           Your notes, categories, budget limits and goal contributions are stored on this device
           only. Origin never sells data, and never shares it with advertisers.
@@ -411,7 +411,7 @@ function PrivacySection() {
             Reset workspace
           </Button>
         </div>
-        <p className="mt-14 text-caption text-fog">
+        <p className="mt-14 text-caption text-ash">
           Resetting clears local edits — notes, categories, budget limits and goal top-ups. Your
           accounts and transactions are untouched.
         </p>

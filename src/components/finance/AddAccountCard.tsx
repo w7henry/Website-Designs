@@ -32,7 +32,7 @@ export function AddAccountCard({ className }: { className?: string }) {
           <IconPlus size={16} />
         </span>
         <span className="text-body-sm text-cloud">Link an account</span>
-        <span className="max-w-[220px] text-caption leading-snug text-fog">
+        <span className="max-w-[220px] text-caption leading-snug text-ash">
           Connect a bank, card or brokerage to see it alongside everything else.
         </span>
       </button>
@@ -68,7 +68,7 @@ export function AddAccountCard({ className }: { className?: string }) {
           ))}
         </ul>
 
-        <p className="mt-20 flex items-start gap-10 rounded-lg border border-hairline bg-abyss px-12 py-12 text-caption leading-relaxed text-fog">
+        <p className="mt-20 flex items-start gap-10 rounded-lg border border-hairline bg-abyss px-12 py-12 text-caption leading-relaxed text-ash">
           <IconShield size={15} className="mt-1 shrink-0" />
           Credentials are handled by your bank, never stored by Origin. Access is read-only and can
           be revoked at any time from Connected accounts.

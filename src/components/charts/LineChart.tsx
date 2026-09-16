@@ -189,7 +189,7 @@ export function LineChart({
       {!compact && (
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between pr-52">
           {xLabels.map((index) => (
-            <span key={index} className="mono-data text-[10px] tracking-normal text-fog">
+            <span key={index} className="mono-data text-[10px] tracking-normal text-ash">
               {formatDayYear(toISO(new Date(series[index]!.t))).replace(/, \d{4}$/, '')}
             </span>
           ))}
@@ -206,7 +206,7 @@ export function LineChart({
           }}
         >
           <div className="rounded-lg border border-hairline bg-graphite px-12 py-8 text-center">
-            <p className="mono-data text-[10px] text-fog">
+            <p className="mono-data text-[10px] text-ash">
               {formatDayYear(toISO(new Date(active.t)))}
             </p>
             <p className="tnum mt-4 text-body-sm text-cloud">{formatValue(active.v)}</p>

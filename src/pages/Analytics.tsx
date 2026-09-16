@@ -139,48 +139,48 @@ export function Analytics() {
       />
 
       {/* ------------------------------------------------------ headline */}
-      <section className="grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-2 gap-10 sm:gap-12 xl:grid-cols-4">
         <Card>
           <MonoLabel>Spent</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={month.spending} cents={false} />
           </p>
           <p className="mt-10 flex items-center gap-8">
             <Change value={spendDelta} className="text-[11px]">
               {Math.abs(spendDelta).toFixed(1)}%
             </Change>
-            <span className="text-caption text-fog">
+            <span className="text-caption text-ash">
               vs {isCurrent ? 'same days last month' : comparison.label.split(' ')[0]}
             </span>
           </p>
         </Card>
         <Card>
           <MonoLabel>Earned</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={month.income} cents={false} />
           </p>
-          <p className="mt-10 text-caption text-fog">
+          <p className="mt-10 text-caption text-ash">
             {month.transactions.filter((tx) => tx.categoryId === 'income').length} deposits
           </p>
         </Card>
         <Card>
           <MonoLabel>Kept</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={month.net} signed cents={false} />
           </p>
-          <p className="mt-10 text-caption text-fog">
+          <p className="mt-10 text-caption text-ash">
             {percent(month.savingsRate, 1)} of everything earned
           </p>
         </Card>
         <Card>
           <MonoLabel>{isCurrent ? 'On pace for' : 'Daily average'}</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount
               value={isCurrent ? projectSpending(month) : month.spending / month.daysInMonth}
               cents={false}
             />
           </p>
-          <p className="mt-10 text-caption text-fog">
+          <p className="mt-10 text-caption text-ash">
             {isCurrent
               ? `${month.daysInMonth - month.daysElapsed} days remaining`
               : `across ${month.daysInMonth} days`}
@@ -231,7 +231,7 @@ export function Analytics() {
                 selectedId={focus}
                 onSelect={setFocus}
               />
-              <div className="min-w-0 flex-1">
+              <div className="w-full min-w-0 lg:flex-1">
                 <CategoryBars
                   slices={slices}
                   total={month.spending}
@@ -253,7 +253,7 @@ export function Analytics() {
               <MonoLabel>{focus ? categoryLabel(focus as CategoryId) : 'Total spending'}</MonoLabel>
               <p className="mt-6 text-body-sm text-ash">Twelve months</p>
             </div>
-            <span className="tnum text-body-sm text-fog">
+            <span className="tnum text-body-sm text-ash">
               avg {currency(trend.reduce((a, b) => a + b.v, 0) / trend.length, { cents: false })}
             </span>
           </div>
@@ -314,7 +314,7 @@ export function Analytics() {
                 <li key={merchant.name} className="flex items-center justify-between gap-12 py-12">
                   <span className="min-w-0">
                     <span className="block truncate text-body-sm text-cloud">{merchant.name}</span>
-                    <span className="mono-data mt-4 block text-[10px] text-fog">
+                    <span className="mono-data mt-4 block text-[10px] text-ash">
                       {merchant.count} {merchant.count === 1 ? 'charge' : 'charges'} ·{' '}
                       {categoryLabel(merchant.category)}
                     </span>
@@ -366,7 +366,7 @@ export function Analytics() {
                 {signedCurrency(flowTotals.net, { cents: false })}
               </span>
             </span>
-            <span className="text-caption text-fog">
+            <span className="text-caption text-ash">
               across {flow.length} {granularity === 'yearly' ? 'years' : granularity === 'monthly' ? 'months' : 'weeks'}
             </span>
           </div>

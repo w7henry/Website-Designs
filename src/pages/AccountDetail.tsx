@@ -92,7 +92,7 @@ export function AccountDetail() {
     <div className="flex flex-col gap-24">
       <Link
         to="/accounts"
-        className="inline-flex items-center gap-6 self-start text-caption text-fog transition-colors duration-200 hover:text-cloud"
+        className="inline-flex items-center gap-6 self-start text-caption text-ash transition-colors duration-200 hover:text-cloud"
       >
         <IconChevronLeft size={13} />
         All accounts
@@ -126,7 +126,7 @@ export function AccountDetail() {
             <span className="tnum text-body-sm text-ash">
               {signedCurrency(delta.absolute, { cents: false })}
             </span>
-            <span className="text-body-sm text-fog">
+            <span className="text-body-sm text-ash">
               over {rangeLabel === 'All' ? 'all time' : `the last ${rangeLabel}`}
             </span>
           </p>
@@ -153,27 +153,27 @@ export function AccountDetail() {
       </Card>
 
       {/* ------------------------------------------------------- metrics */}
-      <section className="grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-2 gap-10 sm:gap-12 xl:grid-cols-4">
         <Card>
           <MonoLabel>Money in</MonoLabel>
           <p className="tnum mt-12 font-lyon-display text-figure leading-none text-cloud">
             <Amount value={monthFlow.inflow} signed cents={false} />
           </p>
-          <p className="mt-8 text-caption text-fog">{month.label} to date</p>
+          <p className="mt-8 text-caption text-ash">{month.label} to date</p>
         </Card>
         <Card>
           <MonoLabel>Money out</MonoLabel>
           <p className="tnum mt-12 font-lyon-display text-figure leading-none text-cloud">
             <Amount value={-monthFlow.outflow} signed cents={false} />
           </p>
-          <p className="mt-8 text-caption text-fog">{month.label} to date</p>
+          <p className="mt-8 text-caption text-ash">{month.label} to date</p>
         </Card>
         <Card>
           <MonoLabel>Net this month</MonoLabel>
           <p className="tnum mt-12 font-lyon-display text-figure leading-none text-cloud">
             <Amount value={monthFlow.inflow - monthFlow.outflow} signed cents={false} />
           </p>
-          <p className="mt-8 text-caption text-fog">
+          <p className="mt-8 text-caption text-ash">
             Average out {currency(averageMonthlyOut, { cents: false })} a month
           </p>
         </Card>
@@ -196,13 +196,13 @@ export function AccountDetail() {
                 className="mt-12"
                 label="Credit utilisation"
               />
-              <p className="mt-8 text-caption text-fog">
+              <p className="mt-8 text-caption text-ash">
                 {currency(Math.abs(account.balance), { cents: false })} of{' '}
                 {currency(account.creditLimit!, { cents: false })}
               </p>
             </>
           ) : (
-            <p className="mt-8 text-caption text-fog">
+            <p className="mt-8 text-caption text-ash">
               {isInvestment
                 ? `${signedCurrency(data.portfolio.totalReturn, { cents: false })} since inception`
                 : account.apy
@@ -269,7 +269,7 @@ export function AccountDetail() {
               )}
               <KeyValue label="Status">Connected · read only</KeyValue>
             </dl>
-            <p className="mt-16 text-caption leading-relaxed text-fog">{account.blurb}</p>
+            <p className="mt-16 text-caption leading-relaxed text-ash">{account.blurb}</p>
           </Card>
 
           {isInvestment && (

@@ -15,6 +15,8 @@ export interface Account {
   creditLimit?: number;
   /** Short line shown under the name in dense lists */
   blurb: string;
+  /** Four or five words, for compact rows where the blurb would clip */
+  short: string;
 }
 
 export type CategoryId =

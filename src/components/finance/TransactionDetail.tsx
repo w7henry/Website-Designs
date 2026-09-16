@@ -82,7 +82,7 @@ export function TransactionDetail({
             <button
               type="button"
               onClick={() => copy(transaction.id.toUpperCase())}
-              className="mono-data inline-flex items-center gap-6 text-[10px] text-fog transition-colors hover:text-cloud"
+              className="mono-data inline-flex items-center gap-6 text-[10px] text-ash transition-colors hover:text-cloud"
             >
               {copied ? <IconCheck size={12} /> : null}
               {copied ? 'Reference copied' : `Ref ${transaction.id.toUpperCase()}`}
@@ -102,7 +102,7 @@ export function TransactionDetail({
               <p className="font-lyon-display text-heading-lg leading-none text-cloud">
                 <Amount value={transaction.amount} signed />
               </p>
-              <p className="mt-8 text-caption text-fog">{formatLongDate(transaction.date)}</p>
+              <p className="mt-8 text-caption text-ash">{formatLongDate(transaction.date)}</p>
             </div>
           </div>
 
@@ -193,7 +193,7 @@ export function TransactionDetail({
                     value={splitAmount}
                     onChange={(event) => setSplitAmount(event.target.value)}
                     placeholder={`Up to ${currency(Math.abs(transaction.amount) - splitTotal)}`}
-                    className="h-36 flex-1 rounded-lg border border-hairline bg-obsidian px-12 text-body-sm text-cloud placeholder:text-fog focus:border-hairline-strong"
+                    className="h-36 flex-1 rounded-lg border border-hairline bg-obsidian px-12 text-body-sm text-cloud placeholder:text-ash focus:border-hairline-strong"
                   />
                   <Select
                     label="Split category"
@@ -230,7 +230,7 @@ export function TransactionDetail({
                     </li>
                   ))}
                   <li className="flex items-center justify-between gap-12 px-12 py-10">
-                    <span className="text-body-sm text-fog">Remaining</span>
+                    <span className="text-body-sm text-ash">Remaining</span>
                     <span className="tnum text-body-sm text-cloud">
                       {currency(Math.abs(transaction.amount) - splitTotal)}
                     </span>

@@ -230,16 +230,16 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
         onKeyDown={onKeyDown}
       >
         <div className="flex items-center gap-12 border-b border-hairline px-16">
-          <IconSearch size={17} className="shrink-0 text-fog" />
+          <IconSearch size={17} className="shrink-0 text-ash" />
           <input
             ref={inputRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search accounts, merchants, categories, goals…"
             aria-label="Search Origin"
-            className="h-56 w-full bg-transparent text-body text-cloud outline-none placeholder:text-fog"
+            className="h-56 w-full bg-transparent text-body text-cloud outline-none placeholder:text-ash"
           />
-          <kbd className="mono-data hidden shrink-0 rounded-md border border-hairline px-6 py-2 text-[10px] text-fog sm:block">
+          <kbd className="mono-data hidden shrink-0 rounded-md border border-hairline px-6 py-2 text-[10px] text-ash sm:block">
             Esc
           </kbd>
         </div>
@@ -248,7 +248,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
           {results.length === 0 ? (
             <div className="px-12 py-40 text-center">
               <p className="text-body-sm text-cloud">Nothing matches “{query}”.</p>
-              <p className="mt-6 text-caption text-fog">
+              <p className="mt-6 text-caption text-ash">
                 Try a merchant, a category like “groceries”, or an account name.
               </p>
             </div>
@@ -272,7 +272,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
                         isActive ? 'bg-glass text-cloud' : 'text-ash',
                       )}
                     >
-                      <span className="flex size-22 shrink-0 items-center justify-center text-fog">
+                      <span className="flex size-22 shrink-0 items-center justify-center text-ash">
                         {command.icon}
                       </span>
                       <span className="min-w-0 flex-1">
@@ -280,13 +280,13 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
                           {command.title}
                         </span>
                         {command.subtitle && (
-                          <span className="mt-2 block truncate text-caption text-fog">
+                          <span className="mt-2 block truncate text-caption text-ash">
                             {command.subtitle}
                           </span>
                         )}
                       </span>
                       {command.meta && (
-                        <span className="mono-data shrink-0 text-[10px] text-fog">
+                        <span className="mono-data shrink-0 text-[10px] text-ash">
                           {command.meta}
                         </span>
                       )}
@@ -321,12 +321,12 @@ function Hint({ keys, label }: { keys: string[]; label: string }) {
       {keys.map((key) => (
         <kbd
           key={key}
-          className="mono-data rounded-md border border-hairline px-5 py-1 text-[9px] text-fog"
+          className="mono-data rounded-md border border-hairline px-5 py-1 text-[10px] text-ash"
         >
           {key}
         </kbd>
       ))}
-      <span className="text-caption text-fog">{label}</span>
+      <span className="text-caption text-ash">{label}</span>
     </span>
   );
 }

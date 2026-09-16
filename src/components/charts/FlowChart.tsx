@@ -124,7 +124,7 @@ export function FlowChart({
               style={{ width: `${(geometry.slot / plotWidth) * 100}%` }}
               className={cn(
                 'mono-data text-center text-[10px] tracking-normal transition-colors duration-200',
-                hover === index ? 'text-cloud' : 'text-fog',
+                hover === index ? 'text-cloud' : 'text-ash',
                 points.length > 14 && index % 2 === 1 && 'opacity-0',
               )}
             >
@@ -146,7 +146,7 @@ export function FlowChart({
           }}
         >
           <div className="min-w-[148px] rounded-lg border border-hairline bg-graphite px-12 py-10">
-            <p className="mono-data text-[10px] text-fog">{active.label}</p>
+            <p className="mono-data text-[10px] text-ash">{active.label}</p>
             <dl className="mt-8 space-y-4">
               <div className="flex items-center justify-between gap-16">
                 <dt className="flex items-center gap-6 text-caption text-ash">

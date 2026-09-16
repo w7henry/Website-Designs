@@ -105,5 +105,5 @@ export const CHART_INK = {
   lineSoft: 'color-mix(in srgb, var(--color-cyan-signal) 14%, transparent)',
   out: 'var(--color-orchid-bloom)',
   grid: 'rgba(255,255,255,0.07)',
-  axis: 'var(--color-fog)',
+  axis: 'var(--color-ash)',
 } as const;

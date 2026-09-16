@@ -81,11 +81,7 @@ export function Insights() {
       ) : (
         <>
           {lead && (
-            <InsightCard
-              insight={lead}
-              onDismiss={dismissInsight}
-              className="lg:[&_p:nth-of-type(1)]:text-[26px]"
-            />
+            <InsightCard insight={lead} onDismiss={dismissInsight} lead />
           )}
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 xl:grid-cols-3">
             {rest.map((insight) => (
@@ -114,7 +110,7 @@ export function Insights() {
                 <MerchantMark name={item.merchant} categoryId={item.categoryId} size={34} />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-body-sm text-cloud">{item.merchant}</span>
-                  <span className="mono-data mt-4 block text-[10px] text-fog">
+                  <span className="mono-data mt-4 block text-[10px] text-ash">
                     {categoryLabel(item.categoryId)} · next {formatDayYear(item.nextDate)}
                   </span>
                 </span>

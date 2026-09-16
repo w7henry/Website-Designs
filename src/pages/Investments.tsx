@@ -95,7 +95,7 @@ export function Investments() {
             <span className="tnum text-body-sm text-ash">
               {signedCurrency(delta.absolute, { cents: false })}
             </span>
-            <span className="text-body-sm text-fog">
+            <span className="text-body-sm text-ash">
               over {rangeLabel === 'All' ? 'all time' : `the last ${rangeLabel}`}
             </span>
           </p>
@@ -118,41 +118,41 @@ export function Investments() {
       </Card>
 
       {/* -------------------------------------------------------- stats */}
-      <section className="grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-2 gap-10 sm:gap-12 xl:grid-cols-4">
         <Card>
           <MonoLabel>Total return</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={portfolio.totalReturn} signed cents={false} />
           </p>
-          <p className="mt-10 text-caption text-fog">
+          <p className="mt-10 text-caption text-ash">
             Against {currency(portfolio.costBasis, { cents: false })} invested
           </p>
         </Card>
         <Card>
           <MonoLabel>Return</MonoLabel>
-          <p className="tnum mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="tnum mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             {signedPercent(portfolio.returnPercent, 2)}
           </p>
-          <p className="mt-10 text-caption text-fog">Since inception, money weighted</p>
+          <p className="mt-10 text-caption text-ash">Since inception, money weighted</p>
         </Card>
         <Card>
           <MonoLabel>Today</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={portfolio.dayChange} signed cents={false} />
           </p>
           <p className="mt-10 flex items-center gap-8">
             <Change value={portfolio.dayChange} className="text-[11px]">
               {Math.abs(portfolio.dayChangePercent).toFixed(2)}%
             </Change>
-            <span className="text-caption text-fog">market close</span>
+            <span className="text-caption text-ash">market close</span>
           </p>
         </Card>
         <Card>
           <MonoLabel>Contributed</MonoLabel>
-          <p className="mt-12 font-lyon-display text-figure-lg leading-none text-cloud">
+          <p className="mt-12 font-lyon-display text-figure leading-none text-cloud sm:text-figure-lg">
             <Amount value={contributions} cents={false} />
           </p>
-          <p className="mt-10 text-caption text-fog">Last 12 transfers, $2,000 on the 3rd</p>
+          <p className="mt-10 text-caption text-ash">Last 12 transfers, $2,000 on the 3rd</p>
         </Card>
       </section>
 
@@ -166,7 +166,7 @@ export function Investments() {
                 {portfolio.holdings.length} positions
               </p>
             </div>
-            <div className="mono-data hidden shrink-0 gap-16 text-[9px] text-fog sm:grid sm:grid-cols-[88px_88px_88px]">
+            <div className="mono-data hidden shrink-0 gap-16 text-[10px] text-ash sm:grid sm:grid-cols-[88px_88px_88px]">
               <span className="text-right">Price</span>
               <span className="text-right">Shares</span>
               <span className="text-right">Value</span>
@@ -221,7 +221,7 @@ export function Investments() {
                         />
                         <span className="truncate text-body-sm text-ash">{slice.label}</span>
                       </span>
-                      <span className="mono-data shrink-0 text-[10px] text-fog">
+                      <span className="mono-data shrink-0 text-[10px] text-ash">
                         {percent((slice.value / portfolio.value) * 100, 1)}
                       </span>
                     </li>
@@ -239,7 +239,7 @@ export function Investments() {
                   <span className="mono-data block text-[11px] text-cloud">
                     {bestAndWorst.best.ticker}
                   </span>
-                  <span className="mt-4 block truncate text-caption text-fog">
+                  <span className="mt-4 block truncate text-caption text-ash">
                     Best total return
                   </span>
                 </span>
@@ -254,7 +254,7 @@ export function Investments() {
                   <span className="mono-data block text-[11px] text-cloud">
                     {bestAndWorst.worst.ticker}
                   </span>
-                  <span className="mt-4 block truncate text-caption text-fog">Weakest today</span>
+                  <span className="mt-4 block truncate text-caption text-ash">Weakest today</span>
                 </span>
                 <Change value={bestAndWorst.worst.dayChange} className="text-[11px]">
                   {signedPercent(Math.abs(bestAndWorst.worst.dayChangePercent), 2).replace(/^\+/, '')}

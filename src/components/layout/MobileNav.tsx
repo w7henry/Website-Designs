@@ -94,7 +94,7 @@ export function MobileNav() {
                 cn(
                   'flex min-h-56 flex-1 flex-col items-center justify-center gap-4 px-4 pt-8 pb-6',
                   'transition-colors duration-200 ease-[var(--ease-state)]',
-                  isActive ? 'text-cloud' : 'text-fog',
+                  isActive ? 'text-cloud' : 'text-ash',
                 )
               }
             >
@@ -108,7 +108,7 @@ export function MobileNav() {
                     )}
                   />
                   <Icon size={18} />
-                  <span className="mono-data text-[9px] tracking-[0.06em]">{item.label}</span>
+                  <span className="mono-data text-[10px] tracking-[0.06em]">{item.label}</span>
                 </>
               )}
             </NavLink>
@@ -122,7 +122,7 @@ export function MobileNav() {
           className={cn(
             'flex min-h-56 flex-1 flex-col items-center justify-center gap-4 px-4 pt-8 pb-6',
             'transition-colors duration-200 ease-[var(--ease-state)]',
-            moreActive || sheetOpen ? 'text-cloud' : 'text-fog',
+            moreActive || sheetOpen ? 'text-cloud' : 'text-ash',
           )}
         >
           <span
@@ -133,7 +133,7 @@ export function MobileNav() {
             )}
           />
           <IconMore size={18} />
-          <span className="mono-data text-[9px] tracking-[0.06em]">More</span>
+          <span className="mono-data text-[10px] tracking-[0.06em]">More</span>
         </button>
       </nav>
     </>

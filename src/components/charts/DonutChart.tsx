@@ -103,7 +103,7 @@ export function DonutChart({
           {focusedSlice ? currency(focusedSlice.value, { cents: false }) : centreValue}
         </p>
         {focusedSlice && (
-          <p className="tnum mt-6 font-roboto-mono text-[10px] text-fog">
+          <p className="tnum mt-6 font-roboto-mono text-[10px] text-ash">
             {percent(focusedSlice.fraction * 100, 1)} of spend
           </p>
         )}
@@ -170,7 +170,7 @@ export function CategoryBars({
                       }}
                     />
                   </span>
-                  <span className="mono-data w-32 shrink-0 text-right text-[10px] text-fog">
+                  <span className="mono-data w-32 shrink-0 text-right text-[10px] text-ash">
                     {total === 0 ? '0%' : `${Math.round((slice.value / total) * 100)}%`}
                   </span>
                 </span>
